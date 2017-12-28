@@ -41,4 +41,32 @@
     </div>
   </article>
 
+  <article>
+    <h3>Event Binding</h3>
+    <div>
+      <button class="btn btn-primary" (click)="botaoClicado()" >Me Clique!</button>
+      <br><br>
+      <input type="text"
+        (keyup)="onKeyUp($event)"
+        (keyup.enter)="salvarValor(campoInput.value)"
+        (blur)="salvarValor(campoInput.value)"
+        #campoInput
+      />
+      <p>Valor Atual é : {{ valorAtual }}</p>
+      <p>Valor Salvo é : {{ valorSalvo }}</p>
+
+      <br>
+      <span
+        (mouseover)="onMouse()"
+        (mouseout)="onMouse()"
+        [class.highlight]="isMouseOver"
+      >
+        Passe o Mouse em Mim!
+      </span>
+
+    </div>
+
+
+  </article>
+
 </section>
