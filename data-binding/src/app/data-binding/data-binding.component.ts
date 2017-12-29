@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 
 @Component({
   selector: 'app-data-binding',
@@ -13,6 +13,11 @@ export class DataBindingComponent implements OnInit {
   valorAtual = '';
   valorSalvo = '';
   isMouseOver = false;
+  nome = 'abc';
+  pessoa: any = {
+    nome:'def',
+    idade:20,
+  }
 
   constructor() { }
 

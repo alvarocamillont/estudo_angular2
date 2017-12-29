@@ -70,3 +70,21 @@
   </article>
 
 </section>
+
+<section>
+  <article>
+    <h3>Two Way Data-Biding</h3>
+    <input type="text"
+      [value]="nome"
+      (input)="nome = $event.target.value"
+    />
+    <input type="text"
+    [(ngModel)]="nome"
+    />    
+    <p>Você digitou {{ nome }}</p>
+
+    <p>Meu nome é {{ pessoa.nome }} e tenho {{pessoa.idade}}</p><br>
+    <input type="text" [(ngModel)] = "pessoa.nome" > <br>
+    <input type="text" [(ngModel)] = "pessoa.idade" > <br>
+  </article>
+</section>
