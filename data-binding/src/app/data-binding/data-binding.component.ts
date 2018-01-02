@@ -14,10 +14,13 @@ export class DataBindingComponent implements OnInit {
   valorSalvo = '';
   isMouseOver = false;
   nome = 'abc';
+
   pessoa: any = {
     nome:'def',
     idade:20,
   }
+
+  nomeCurso: string = 'Angular';
 
   constructor() { }
 
