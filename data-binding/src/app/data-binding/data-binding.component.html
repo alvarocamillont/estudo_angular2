@@ -9,6 +9,14 @@
     <contador [valor]='valorInicial'
     (mudouValor)="onMudouValor($event)">
     </contador>
+
+    <br><br>
+
+    <app-ciclo [valorInicial]="valorCiclo" *ngIf="!deletarCiclo"></app-ciclo> 
+    <button (click)="mudarValor()">Mudar Valor</button> 
+    <button (click)="destruirCiclo()">Deletar</button> 
+
+
   </article>
 </section>
 

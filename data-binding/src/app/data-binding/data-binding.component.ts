@@ -21,6 +21,9 @@ export class DataBindingComponent implements OnInit {
     idade:20,
   }
 
+  valorCiclo: number = 0;
+  deletarCiclo: boolean = false;
+
   nomeCurso: string = 'Angular';
 
   constructor() { }
@@ -54,6 +57,14 @@ export class DataBindingComponent implements OnInit {
 
   onMudouValor (evento){
     console.log(evento.novoValor);
+  }
+
+  mudarValor (){
+    this.valorCiclo++;
+  }
+
+  destruirCiclo (){
+    this.deletarCiclo = true;
   }
 
 }
