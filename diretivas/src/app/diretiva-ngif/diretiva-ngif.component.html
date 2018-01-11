@@ -27,3 +27,9 @@
 <div [hidden]="!mostrar">
   ACHOU!
 </div>
+
+<h5> Removendo o * e usando o template</h5>
+
+<ng-template [ngIf]="mostrar">
+  <div>Lista de cursos</div>
+</ng-template>
