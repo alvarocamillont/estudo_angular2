@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiretivasPersonalizadasComponent implements OnInit {
 
+  mostrar = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onMostraBotao () {
+    this.mostrar = !this.mostrar;
   }
 
 }

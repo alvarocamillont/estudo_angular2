@@ -13,3 +13,15 @@
   Texto com hightlight aplicado com cores customizadas
 </p>
 
+<br>
+
+<div *ngElse="mostrar">
+  Cadê a mensagem?
+</div>
+
+<div *ngElse="!mostrar">
+  ACHOU!
+</div>
+
+<button (click)="onMostraBotao()">Mostrar</button>
+
