@@ -10,7 +10,7 @@ export class ReceberCursoCriadoComponent implements OnInit {
 
   curso: string;
 
-  constructor(private cursosService: CursosService) { }
+  constructor() { }
 
   ngOnInit() {
     CursosService.emitirCursoCriado.subscribe(
