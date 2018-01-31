@@ -1,5 +1,5 @@
 <h5>Exemplo de Pipe</h5>
-<p>Titulo: {{ livro.titulo | uppercase }}</p>
+<p>Titulo: {{ livro.titulo | uppercase | camelCase }}</p>
 <p>Estrela: {{ livro.rating | number:'1.1-1' }}</p>
 <p>Número de Páginas: {{ livro.numeroPaginas | number }}</p>
 <p>Preço: {{ livro.preco | currency:'BRL' }}</p>

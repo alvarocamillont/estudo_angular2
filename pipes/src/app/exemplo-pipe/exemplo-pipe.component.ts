@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ExemploPipeComponent implements OnInit {
 
   livro: any = {
-    titulo: 'Aprendendo Javascript',
+    titulo: 'aprendendo javascript EBA',
     rating: 4.5665,
     numeroPaginas: 314,
     preco: 44.99,

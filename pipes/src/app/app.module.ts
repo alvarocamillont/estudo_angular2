@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ExemploPipeComponent } from './exemplo-pipe/exemplo-pipe.component';
+import { CamelCasePipe } from './camel-case.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExemploPipeComponent
+    ExemploPipeComponent,
+    CamelCasePipe
   ],
   imports: [
     BrowserModule
