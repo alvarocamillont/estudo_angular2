@@ -16,9 +16,17 @@ export class ExemploPipeComponent implements OnInit {
     url: 'https://tinyurl.com/ybr97fuk'
   };
 
+  livros: string[] = ['Python', 'ADVPL'];
+
+  filtro: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addLivro (livro: string) {
+    this.livros.push(livro);
   }
 
 }
