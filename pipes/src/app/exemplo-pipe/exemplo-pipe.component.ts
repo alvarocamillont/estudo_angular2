@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-exemplo-pipe',
@@ -19,6 +20,11 @@ export class ExemploPipeComponent implements OnInit {
   livros: string[] = ['Python', 'ADVPL'];
 
   filtro: string;
+
+  valorAsync = new Promise((resolve, reject) => { setTimeout(() => resolve('Valor Assincrono') , 2000 ); });
+
+  valorAsync2 = Observable.interval(2000)
+  .map(valor => 'Valor assíncrono 2');
 
   constructor() { }
 
