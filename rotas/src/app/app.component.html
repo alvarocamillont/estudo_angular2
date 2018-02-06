@@ -2,12 +2,15 @@
   <div class="nav-wrapper">
     <a routerLink="" class="brand-logo right">Rotas NG2</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/cursos">Cursos</a></li>
+      <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+      <li routerLinkActive="active"><a routerLink="/cursos">Cursos</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['curso', idcurso.value ]">Curso com Id</a></li>
     </ul>
   </div>
 </nav>
 <div class="container">
+  <p>Entre com o id do curso</p>
+  <input #idcurso >
   <router-outlet></router-outlet>
 </div>
 
