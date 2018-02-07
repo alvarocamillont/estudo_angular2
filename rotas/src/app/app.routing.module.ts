@@ -1,4 +1,4 @@
-
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
@@ -9,7 +9,7 @@ import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-en
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 
 
-const APP_ROUTES: Routes = [
+const appRoutes: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'curso/:id', component: CursoDetalheComponent },
   { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
@@ -17,4 +17,10 @@ const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {
+
+}
