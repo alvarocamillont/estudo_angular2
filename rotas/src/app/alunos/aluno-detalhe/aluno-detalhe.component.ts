@@ -1,8 +1,7 @@
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AlunosService } from './../alunos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -16,7 +15,8 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private alunosService: AlunosService
+    private alunosService: AlunosService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -31,5 +31,9 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
+
+  editarContato() {
+    this.router.navigate(['/alunos', this.aluno.id, 'editar']);
+ }
 
 }
