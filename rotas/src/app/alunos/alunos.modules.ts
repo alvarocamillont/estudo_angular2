@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AlunosComponent } from './alunos.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
+import { AlunosService } from './alunos.service';
 
 
 
@@ -15,6 +16,6 @@ import { AlunosRoutingModule } from './alunos.routing.module';
     AlunoFormComponent,
     AlunoDetalheComponent
   ],
-  providers: [],
+  providers: [AlunosService],
 })
 export class AlunosModule { }
