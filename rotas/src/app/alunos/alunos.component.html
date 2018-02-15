@@ -7,9 +7,9 @@
     <div class="collection">
 
       <a class="collection-item"
-      *ngFor="let alunos of alunos"
-      [routerLink]="['aluno.id']">
-      {{ alunos.nome }}
+      *ngFor="let aluno of alunos"
+      [routerLink]="[aluno.id]">
+      {{ aluno.nome }}
       </a>
 
     </div>

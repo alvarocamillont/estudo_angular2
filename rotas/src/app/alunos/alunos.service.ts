@@ -14,4 +14,14 @@ export class AlunosService {
   getAlunos () {
     return this.alunos;
   }
+
+  getAluno(id: number) {
+    const alunos = this.getAlunos();
+    for (const aluno of alunos) {
+      if (aluno.id == id) {
+        return aluno;
+      }
+    }
+    return null;
+  }
 }
