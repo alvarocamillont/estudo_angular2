@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  private usuarioAutenticado: boolean;
+  private usuarioAutenticado = false;
 
   mostrarMenuEmitter = new EventEmitter<boolean>() ;
 
@@ -23,6 +23,10 @@ export class AuthService {
       console.log('Errou');
       console.log(usuario);
     }
+  }
+
+  isUsuarioAutenticado() {
+    return this.usuarioAutenticado;
   }
 
 }
