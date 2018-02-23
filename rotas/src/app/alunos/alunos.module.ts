@@ -6,6 +6,7 @@ import { AlunosComponent } from './alunos.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
+import { AlunosGuard } from '../guards/alunos.guard';
 
 
 
@@ -19,6 +20,6 @@ import { AlunosService } from './alunos.service';
     AlunoFormComponent,
     AlunoDetalheComponent
   ],
-  providers: [AlunosService],
+  providers: [AlunosService, AlunosGuard],
 })
 export class AlunosModule { }
