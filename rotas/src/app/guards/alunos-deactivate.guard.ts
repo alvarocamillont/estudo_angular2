@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlunoFormComponent } from '../alunos/aluno-form/aluno-form.component';
+import { IFormCanDeactivate } from './iform-candeactivate';
 
 // Consider using this interface for all CanDeactivate guards,
 // and have your components implement this interface, too.
@@ -13,14 +14,14 @@ import { AlunoFormComponent } from '../alunos/aluno-form/aluno-form.component';
 // }
 
 @Injectable()
-export class AlunosDeactivateGuard implements CanDeactivate<AlunoFormComponent> {
+export class AlunosDeactivateGuard implements CanDeactivate<IFormCanDeactivate> {
 
   canDeactivate(
-    component: AlunoFormComponent,
+    component: IFormCanDeactivate,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
 
-    return component.podeMudarRota ? component.podeMudarRota() : true ;
+    return component.podeDesativar();
   }
 }

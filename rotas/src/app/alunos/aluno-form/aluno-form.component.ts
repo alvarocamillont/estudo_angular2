@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlunosService } from './../alunos.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { IFormCanDeactivate } from '../../guards/iform-candeactivate';
 @Component({
   selector: 'app-aluno-form',
   templateUrl: './aluno-form.component.html',
   styleUrls: ['./aluno-form.component.css']
 })
-export class AlunoFormComponent implements OnInit, OnDestroy {
+export class AlunoFormComponent implements OnInit, OnDestroy, IFormCanDeactivate {
 
   aluno: any;
   inscricao: Subscription;
@@ -46,5 +47,10 @@ export class AlunoFormComponent implements OnInit, OnDestroy {
       return true;
     }
   }
+
+  podeDesativar() {
+    return this.podeMudarRota();
+  }
+
 
 }
