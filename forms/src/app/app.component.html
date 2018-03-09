@@ -1,1 +1,22 @@
-router-outlet
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">Angular Forms</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink="/templateForm">Form - Template Driven</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/dataForm">Form - Data Driven</a>
+      </li>
+    </ul>
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
