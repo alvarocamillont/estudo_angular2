@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { DataFormComponent } from './data-form/data-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,11 +13,13 @@ import { DataFormComponent } from './data-form/data-form.component';
     AppComponent,
     TemplateFormComponent,
     DataFormComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
