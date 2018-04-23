@@ -5,7 +5,7 @@
     </div>
     <div class="col-sm-12">
       <input type="text" class="form-control" name="nome"
-        id="nome" placeholder="Nome" [ngModel]="usuario.nome"
+        id="nome" placeholder="Nome" ngModel
         required #nome="ngModel">
         <app-campo-control-erro [mostrarErro]="verificaValidTouched(nome)"
         msgErro="Nome é obrigatório."></app-campo-control-erro>
@@ -18,8 +18,8 @@
     </div>
     <div class="col-sm-12">
       <input type="email" class="form-control" name="email"
-        id="email" placeholder="nome@email.com" [ngModel]="usuario.email"
-        required email #email="ngModel">
+        id="email" placeholder="nome@email.com" ngModel
+        required email #email="ngModel" >
       <!-- pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" -->
       <app-campo-control-erro [mostrarErro]="verificaValidTouched(email)"
       msgErro="Email inválido."></app-campo-control-erro>
@@ -31,7 +31,8 @@
         <label for="cep" class="control-label">CEP</label>
         <input type="text" class="form-control" name="cep"
           id="cep"  ngModel
-          required #cep="ngModel">
+          required #cep="ngModel"
+          (blur)="consultaCEP($event.target.value, f)">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched(cep)"
           msgErro="Cep inválido."></app-campo-control-erro>
       </div>
@@ -59,7 +60,7 @@
       </div>
       <div class="col-sm-12">
         <input type="text" class="form-control" name="rua"
-          id="rua"  [ngModel]="usuario.rua"
+          id="rua"  ngModel
           required #rua="ngModel">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched(rua)"
           msgErro="Rua inválida."></app-campo-control-erro>

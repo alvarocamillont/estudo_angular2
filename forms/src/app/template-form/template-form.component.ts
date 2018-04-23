@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-template-form',
@@ -8,11 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class TemplateFormComponent implements OnInit {
 
   usuario: any = {
-    nome: null,
-    email: null
+
   };
 
-  constructor() { }
+  constructor(private http: HttpClient ) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,46 @@ export class TemplateFormComponent implements OnInit {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
     };
+  }
+
+  consultaCEP(cep: string, form) {
+    cep = cep.replace(/\D/g, '');
+    if (cep !== '') {
+      const validacep = /^[0-9]{8}$/;
+
+      if (validacep.test(cep)) {
+        this.resetaDadosForm(form);
+        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
+        .subscribe(dados => {
+          this.populaDadosForm(dados, form);
+        });
+      }
+    }
+  }
+
+  populaDadosForm(dados, formulario) {
+    formulario.form.patchValue({
+      endereco: {
+        cep: dados.cep ,
+        complemento: dados.complemento ,
+        bairro: dados.bairro ,
+        cidade: dados.localidade ,
+        estado: dados.uf,
+        rua: dados.logradouro
+      }
+    });
+  }
+
+  resetaDadosForm(formulario) {
+    formulario.form.patchValue({
+      endereco: {
+        complemento: null ,
+        bairro: null ,
+        cidade: null ,
+        estado: null,
+        rua: null
+      }
+    });
   }
 
 }
