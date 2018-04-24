@@ -19,8 +19,10 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form.value);
-    console.log(this.usuario);
+    console.log(form);
+    this.http.post('enderecoserver/formUsuario', JSON.stringify(form.value))
+    .subscribe();
+
   }
 
   verificaValidTouched(campo) {
