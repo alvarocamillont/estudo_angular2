@@ -25,21 +25,21 @@
     </div>
   </div>
 
-  <div>
+  <div formGroupName='endereco'>
     <div class="form-group" >
-      <div class="col-md-3" [ngClass]="aplicaCssErro('cep')">
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
         <label for="cep" class="control-label">CEP</label>
         <input type="text" class="form-control" id="cep"
          formControlName="cep">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('cep')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.cep')"
           msgErro="Cep inválido."></app-campo-control-erro>
       </div>
 
-      <div class="col-md-3" [ngClass]="aplicaCssErro('numero')">
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.numero')">
         <label for="numero" class="control-label">numero</label>
         <input type="text" class="form-control" id="numero"
         formControlName="numero">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('numero')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.numero')"
           msgErro="Numero inválido."></app-campo-control-erro>
       </div>
 
@@ -51,38 +51,38 @@
     </div>
 
     <div class="form-group" >
-      <div class="col-sm-12" [ngClass]="aplicaCssErro('rua')">
+      <div class="col-sm-12" [ngClass]="aplicaCssErro('endereco.rua')">
         <label for="rua" class="control-label">Rua</label>
       </div>
       <div class="col-sm-12">
         <input type="text" class="form-control" id="rua"
         formControlName="rua">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('rua')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.rua')"
           msgErro="Rua inválida."></app-campo-control-erro>
       </div>
     </div>
 
     <div class="form-group">
-      <div class="col-md-5" [ngClass]="aplicaCssErro('bairro')">
+      <div class="col-md-5" [ngClass]="aplicaCssErro('endereco.bairro')">
         <label for="bairro" class="control-label">Bairro</label>
         <input type="text" class="form-control" id="bairro"
         formControlName="bairro">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('bairro')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.bairro')"
           msgErro="Bairro inválido."></app-campo-control-erro>
       </div>
 
-      <div class="col-md-4" [ngClass]="aplicaCssErro('cidade')">
+      <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
         <label for="cidade" class="control-label">Cidade</label>
         <input type="text" class="form-control" id="cidade"
         formControlName="cidade">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('cidade')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.cidade')"
           msgErro="Cidade inválida."></app-campo-control-erro>
       </div>
-      <div class="col-md-3" [ngClass]="aplicaCssErro('estado')">
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.estado')">
         <label for="estado" class="control-label">Estado</label>
         <input type="text" class="form-control" id="estado"
         formControlName="estado">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('estado')"
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.estado')"
           msgErro="Estado inválido."></app-campo-control-erro>
       </div>
     </div>
