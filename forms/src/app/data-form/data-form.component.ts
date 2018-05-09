@@ -41,13 +41,21 @@ export class DataFormComponent implements OnInit {
       );
     } else {
       console.log('formulario invalido');
-      Object.keys(this.formulario.controls).forEach( campo => {
-        console.log(campo);
-        const controle = this.formulario.get(campo);
-        controle.markAsDirty();
-      });
+      this.verificaValidacoes(this.formulario);
     }
   }
+
+  verificaValidacoes(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle.markAsDirty();
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoes(controle);
+      }
+    });
+  }
+
   resetar() {
     this.formulario.reset();
   }
