@@ -29,25 +29,32 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario);
-    this.http
-      .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-      .subscribe(dados => {
-        console.log(dados);
-        // reseta o form
-        this.resetar();
-      },
-      (error: any) => alert('erro')
-    );
+    if (this.formulario.valid) {
+      this.http
+        .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .subscribe(dados => {
+          console.log(dados);
+          // reseta o form
+          this.resetar();
+        },
+        (error: any) => alert('erro')
+      );
+    } else {
+      console.log('formulario invalido');
+      Object.keys(this.formulario.controls).forEach( campo => {
+        console.log(campo);
+        const controle = this.formulario.get(campo);
+        controle.markAsDirty();
+      });
+    }
   }
-
   resetar() {
     this.formulario.reset();
   }
 
   verificaValidTouched(nomeCampo) {
     const campo = this.formulario.get(nomeCampo);
-    return !campo.valid && campo.touched;
+    return !campo.valid && (campo.touched || campo.dirty);
   }
 
   aplicaCssErro(campo) {
@@ -60,7 +67,7 @@ export class DataFormComponent implements OnInit {
   verificaEmailInvalido() {
     const campoEmail = this.formulario.get('email');
     if (campoEmail.errors) {
-      return campoEmail.errors['email'] && campoEmail.touched ;
+      return campoEmail.errors['email'] && (campoEmail.touched || campoEmail.dirty ) ;
     }
   }
 
