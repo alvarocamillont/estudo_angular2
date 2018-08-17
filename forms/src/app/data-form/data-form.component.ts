@@ -17,7 +17,7 @@ import { EstadosBr } from '../shared/models/estadosbr';
 })
 export class DataFormComponent implements OnInit {
   formulario: FormGroup;
-  estados: EstadosBr;
+  estados;
 
   constructor(
     private formBuilder: FormBuilder,
