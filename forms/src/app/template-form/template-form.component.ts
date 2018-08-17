@@ -1,6 +1,6 @@
+import { ConsultaCepService } from './../shared/services/consulta-cep.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-template-form',
@@ -8,21 +8,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
+  usuario: any = {};
 
-  usuario: any = {
+  constructor(
+    private http: HttpClient,
+    private cepService: ConsultaCepService
+  ) {}
 
-  };
-
-  constructor(private http: HttpClient ) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit(form) {
     console.log(form);
-    this.http.post('enderecoserver/formUsuario', JSON.stringify(form.value))
-    .subscribe();
-
+    this.http
+      .post('enderecoserver/formUsuario', JSON.stringify(form.value))
+      .subscribe();
   }
 
   verificaValidTouched(campo) {
@@ -37,27 +36,21 @@ export class TemplateFormComponent implements OnInit {
   }
 
   consultaCEP(cep: string, form) {
-    cep = cep.replace(/\D/g, '');
-    if (cep !== '') {
-      const validacep = /^[0-9]{8}$/;
-
-      if (validacep.test(cep)) {
+    if (cep != null && cep !== '') {
+      this.cepService.consultaCEP(cep).subscribe(dados => {
         this.resetaDadosForm(form);
-        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-        .subscribe(dados => {
-          this.populaDadosForm(dados, form);
-        });
-      }
+        this.populaDadosForm(dados, form);
+      });
     }
   }
 
   populaDadosForm(dados, formulario) {
     formulario.form.patchValue({
       endereco: {
-        cep: dados.cep ,
-        complemento: dados.complemento ,
-        bairro: dados.bairro ,
-        cidade: dados.localidade ,
+        cep: dados.cep,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
         estado: dados.uf,
         rua: dados.logradouro
       }
@@ -67,13 +60,12 @@ export class TemplateFormComponent implements OnInit {
   resetaDadosForm(formulario) {
     formulario.form.patchValue({
       endereco: {
-        complemento: null ,
-        bairro: null ,
-        cidade: null ,
+        complemento: null,
+        bairro: null,
+        cidade: null,
         estado: null,
         rua: null
       }
     });
   }
-
 }
