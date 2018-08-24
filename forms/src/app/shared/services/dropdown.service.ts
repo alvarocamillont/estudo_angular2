@@ -29,4 +29,8 @@ export class DropdownService {
       { nome: 'php', desc: 'PHP' }
     ];
   }
+
+  getNewsletter() {
+    return [{ valor: 's', desc: 'Sim' }, { valor: 'n', desc: 'Não' }];
+  }
 }
