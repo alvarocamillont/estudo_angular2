@@ -106,6 +106,17 @@
         <app-campo-control-erro [mostrarErro]="!formulario.get('termos').valid" msgErro="Por favor aceite os termos"></app-campo-control-erro>
       </div>
     </div>
+    <div class="col-md-3" [ngClass]="aplicaCssErro('frameworks')">
+      <label for="frameworks">Frameworks</label>
+      <div id="frameworks" class="row">
+        <div class="checkbox" class="col-sm-4" formArrayName="frameworks" *ngFor="let item of formulario.get('frameworks').controls; let i=index">
+          <label class="checkbox-inline">
+            <input type="checkbox" formControlName="frameworks" [formControlName]="i" /> {{frameworks[i]}}
+          </label>
+          <app-campo-control-erro [mostrarErro]="!formulario.get('termos').valid" msgErro="Por favor aceite os termos"></app-campo-control-erro>
+        </div>
+      </div>
+    </div>
   </div>
 
   <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>

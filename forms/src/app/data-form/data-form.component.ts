@@ -2,7 +2,12 @@ import { Observable } from 'rxjs';
 import { EstadosBr } from './../shared/models/estadosbr';
 import { ConsultaCepService } from './../shared/services/consulta-cep.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
 
@@ -17,6 +22,8 @@ export class DataFormComponent implements OnInit {
   cargos: any[];
   tecnologias: any[];
   newsletterOp: any[];
+
+  frameworks = ['Angular', 'React', 'Vue', 'Django'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,14 +52,29 @@ export class DataFormComponent implements OnInit {
       cargo: [null],
       tecnologias: [null],
       newsletter: ['s'],
-      termos: [null, Validators.pattern('true')]
+      termos: [null, Validators.pattern('true')],
+      frameworks: this.buildFrameworks()
     });
   }
 
+  buildFrameworks() {
+    const values = this.frameworks.map(v => new FormControl(false));
+    return this.formBuilder.array(values);
+  }
+
   onSubmit() {
+    let valueSubmit = Object.assign({}, this.formulario.value);
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v, i) => (v ? this.frameworks[i] : null))
+        .filter(v => v !== null)
+    });
+
+    console.log(valueSubmit);
+
     if (this.formulario.valid) {
       this.http
-        .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .subscribe(
           dados => {
             console.log(dados);
