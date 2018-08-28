@@ -116,10 +116,7 @@ export class DataFormComponent implements OnInit {
 
   verificaRequired(nomeCampo) {
     const campo = this.formulario.get(nomeCampo);
-    return (
-      campo.hasError('required') &&
-      (campo.touched || campo.dirty)
-    );
+    return campo.hasError('required') && (campo.touched || campo.dirty);
   }
 
   aplicaCssErro(campo) {
