@@ -113,8 +113,8 @@
           <label class="checkbox-inline">
             <input type="checkbox" formControlName="frameworks" [formControlName]="i" /> {{frameworks[i]}}
           </label>
-          <app-campo-control-erro [mostrarErro]="!formulario.get('termos').valid" msgErro="Por favor aceite os termos"></app-campo-control-erro>
         </div>
+        <app-campo-control-erro [mostrarErro]="!formulario.get('frameworks').valid" msgErro="Por favor selecione pelo menos uma opção"></app-campo-control-erro>
       </div>
     </div>
   </div>

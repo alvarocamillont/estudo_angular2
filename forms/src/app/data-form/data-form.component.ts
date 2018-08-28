@@ -6,7 +6,8 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl
+  FormControl,
+  FormArray
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -59,7 +60,18 @@ export class DataFormComponent implements OnInit {
 
   buildFrameworks() {
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, this.requiredMinCheckBox(2));
+  }
+
+  requiredMinCheckBox(min = 1) {
+    const validator = (formArray: FormArray) => {
+      const totalChecked = formArray.controls
+        .map(v => v.value)
+        .reduce((total, current) => (current ? total + current : total), 0);
+      return totalChecked >= min ? null : { required: true };
+    };
+
+    return validator;
   }
 
   onSubmit() {
