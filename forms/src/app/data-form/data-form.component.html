@@ -9,6 +9,7 @@
     </div>
   </div>
 
+
   <div class="form-group" [ngClass]="aplicaCssErro('email')">
     <div class="col-sm-12">
       <label for="email" class="control-label">Email</label>
@@ -17,6 +18,16 @@
       <input type="email" class="form-control" formControlName="email" id="email" placeholder="nome@email.com">
       <app-campo-control-erro [mostrarErro]="verificaValidTouched('email')" msgErro="Email é obrigatório."></app-campo-control-erro>
       <app-campo-control-erro [mostrarErro]="verificaEmailInvalido()" msgErro="Email inválido."></app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="aplicaCssErro('confirmarEmail')">
+    <div class="col-sm-12">
+      <label for="confirmarEmail" class="control-label">Confirmar Email</label>
+    </div>
+    <div class="col-sm-12">
+      <input type="email" class="form-control" formControlName="confirmarEmail" id="confirmarEmail" placeholder="nome@email.com">
+      <app-campo-control-erro [mostrarErro]="formulario.get('confirmarEmail').hasError('equalsTo')" msgErro="O email deve ser igual"></app-campo-control-erro>
     </div>
   </div>
 
