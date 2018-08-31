@@ -1,3 +1,4 @@
+import { VerificaEmailService } from './services/verifica-email.service';
 import { FormValidations } from './../shared/form-validation';
 import { Observable } from 'rxjs';
 import { EstadosBr } from './../shared/models/estadosbr';
@@ -31,10 +32,12 @@ export class DataFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropDownService: DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private verificaEmailService: VerificaEmailService
   ) {}
 
   ngOnInit() {
+    this.verificaEmailService.verificarEmail('email1@email.com').subscribe();
     this.estados = this.dropDownService.getEstadosBr();
     this.cargos = this.dropDownService.getCargos();
     this.tecnologias = this.dropDownService.getTecnologias();
