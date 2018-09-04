@@ -49,4 +49,10 @@ export class FormValidations {
 
     return validator;
   }
+
+  static getErrorMsg(fieldName: string, validatorName: string) {
+    const config = {
+      required: `${fieldName} é obrigatório.`
+    };
+  }
 }
