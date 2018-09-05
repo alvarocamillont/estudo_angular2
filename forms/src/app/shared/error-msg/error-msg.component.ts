@@ -1,5 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
+import { FormValidations } from '../form-validation';
 
 @Component({
   selector: 'app-error-msg',
@@ -7,12 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./error-msg.component.css']
 })
 export class ErrorMsgComponent implements OnInit {
-  @Input()
-  mostrarErro: boolean;
-  @Input()
-  msgErro: string;
-  @Input()
-  control: FormControl;
+
+  @Input() control: FormControl;
+  @Input() label: string;
 
   constructor() {}
 
@@ -24,7 +22,7 @@ export class ErrorMsgComponent implements OnInit {
         this.control.errors.hasOwnProperty(propertyName) &&
         this.control.touched
       ) {
-        //TODO
+        return FormValidations.getErrorMsg(this.label, propertyName, this.control.errors[propertyName]);
       }
     }
     return null;
